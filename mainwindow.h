@@ -40,21 +40,15 @@ private slots:
 
     void on_actionAbout_Qt_triggered();
 
-    void on_actionItalic_triggered();
-
-    void on_actionBold_triggered();
-
-    void on_actionUnderline_triggered();
-
-    void on_actionBold_triggered(bool checked);
-
     void on_actionLeft_Align_triggered();
 
     void on_actionRight_Align_triggered();
 
     void on_actionCenter_Align_triggered();
 
-    void on_actionNormal_Default_triggered();
+    void on_actionFont_Dialog_triggered();
+
+    void on_actionColour_Dialog_triggered();
 
 private:
     Ui::MainWindow *ui;

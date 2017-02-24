@@ -1,12 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QApplication>
-#include <qmessagebox.h>
+#include <QMessageBox>
 #include <QFile>
 #include <QFileDialog>
 #include <QTextStream>
 #include <qtextedit.h>
-
+#include <QFontDialog>
+#include <QFont>
+#include <QFontDatabase>
+#include <QTextCursor>
+#include <QColor>
+#include <QColorDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setCentralWidget(ui->textEdit); // Removes the sidegaps from the text editor
+   // ui->mainToolBar->addSeparator();
 }
 
 MainWindow::~MainWindow()
@@ -41,7 +47,7 @@ void MainWindow::on_actionOpen_triggered()
     //Read the file
     QTextStream inputData(&file);
     QString fileText = inputData.readAll();
-    ui->textEdit->setText(fileText);
+    ui->textEdit->setHtml(fileText);
     file.close();
   }
 }
@@ -56,7 +62,7 @@ void MainWindow::on_actionSave_triggered()
     else{
       //Read the file
       QTextStream writeData(&file);
-      QString fileText = ui->textEdit->toPlainText();
+      QString fileText = ui->textEdit->toHtml();
       writeData << fileText;
       file.flush();
       file.close();
@@ -75,7 +81,7 @@ void MainWindow::on_actionSave_as_triggered()
      else{
        //Read the file
        QTextStream writeData(&file);
-       QString fileText = ui->textEdit->toPlainText();
+       QString fileText = ui->textEdit->toHtml();
        writeData << fileText;
        file.flush();
        file.close();
@@ -122,29 +128,6 @@ void MainWindow::on_actionAbout_Qt_triggered()
     QMessageBox::aboutQt(this,"About Qt Creator.");
 }
 
-void MainWindow::on_actionItalic_triggered()
-{
-    QTextCharFormat format;
-    format.setFontItalic(true);
-    ui->textEdit->textCursor().mergeCharFormat(format);
-
-}
-
-void MainWindow::on_actionBold_triggered()
-{
-    QTextCharFormat format;
-    format.setFontWeight(QFont::Bold);
-    ui->textEdit->textCursor().mergeCharFormat(format);
-}
-
-void MainWindow::on_actionUnderline_triggered()
-{
-    QTextCharFormat format;
-    format.setFontUnderline(true);
-    ui->textEdit->textCursor().mergeCharFormat(format);
-}
-
-
 void MainWindow::on_actionLeft_Align_triggered()
 {
     ui->textEdit->setAlignment(Qt::AlignLeft);
@@ -160,9 +143,29 @@ void MainWindow::on_actionCenter_Align_triggered()
     ui->textEdit->setAlignment(Qt::AlignCenter);
 }
 
-void MainWindow::on_actionNormal_Default_triggered()
+void MainWindow::on_actionFont_Dialog_triggered()
 {
-    QTextCharFormat format;
-    format.setFontWeight(QFont::Normal);
-    ui->textEdit->textCursor().mergeCharFormat(format);
+    bool ok;
+    QFont fontStyle = QFontDialog::getFont(&ok,this);
+
+    if(ok){
+            QTextCharFormat format;
+            format.setFont(fontStyle);
+            QTextCursor txtCursor(ui->textEdit->textCursor());
+            txtCursor.setCharFormat(format);
+            txtCursor.clearSelection();
+            ui->textEdit->setTextCursor(txtCursor);
+    }
+    else{
+            return;
+    }
+
+}
+
+void MainWindow::on_actionColour_Dialog_triggered()
+{
+
+    QColor txtColour = QColorDialog::getColor();
+    ui->textEdit->setTextColor(txtColour);
+
 }

@@ -19,5 +19,8 @@
         <file>icons/center_align.png</file>
         <file>icons/right_align.png</file>
         <file>icons/normal.png</file>
+        <file>icons/fontdialog.png</file>
+        <file>icons/changefont.png</file>
+        <file>icons/colorwheel.png</file>
     </qresource>
 </RCC>

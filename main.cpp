@@ -1,3 +1,7 @@
+#ifdef QT_NO_DEBUG_OUTPUT
+#undef QT_NO_DEBUG_OUTPUT
+#endif
+
 #include "mainwindow.h"
 #include <QApplication>
 

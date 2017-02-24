@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>693</width>
-    <height>380</height>
+    <width>770</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>693</width>
+     <width>770</width>
      <height>19</height>
     </rect>
    </property>
@@ -51,10 +51,6 @@
     <addaction name="separator"/>
     <addaction name="actionUndo"/>
     <addaction name="actionRedo"/>
-    <addaction name="actionBold"/>
-    <addaction name="actionItalic"/>
-    <addaction name="actionNormal_Default"/>
-    <addaction name="actionUnderline"/>
     <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
@@ -73,6 +69,8 @@
     <addaction name="actionRight_Align"/>
     <addaction name="actionCenter_Align"/>
     <addaction name="separator"/>
+    <addaction name="actionFont_Dialog"/>
+    <addaction name="actionColour_Dialog"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -104,19 +102,15 @@
    <addaction name="separator"/>
    <addaction name="actionRedo"/>
    <addaction name="separator"/>
-   <addaction name="actionBold"/>
-   <addaction name="separator"/>
-   <addaction name="actionItalic"/>
-   <addaction name="separator"/>
-   <addaction name="actionUnderline"/>
-   <addaction name="separator"/>
-   <addaction name="actionNormal_Default"/>
-   <addaction name="separator"/>
    <addaction name="actionLeft_Align"/>
    <addaction name="separator"/>
    <addaction name="actionRight_Align"/>
    <addaction name="separator"/>
    <addaction name="actionCenter_Align"/>
+   <addaction name="separator"/>
+   <addaction name="actionFont_Dialog"/>
+   <addaction name="separator"/>
+   <addaction name="actionColour_Dialog"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNew">
@@ -209,33 +203,6 @@
     <string>Redo</string>
    </property>
   </action>
-  <action name="actionBold">
-   <property name="icon">
-    <iconset resource="iconresource.qrc">
-     <normaloff>:/IconResource/icons/bold.png</normaloff>:/IconResource/icons/bold.png</iconset>
-   </property>
-   <property name="text">
-    <string>Bold</string>
-   </property>
-  </action>
-  <action name="actionItalic">
-   <property name="icon">
-    <iconset resource="iconresource.qrc">
-     <normaloff>:/IconResource/icons/italic.png</normaloff>:/IconResource/icons/italic.png</iconset>
-   </property>
-   <property name="text">
-    <string>Italic</string>
-   </property>
-  </action>
-  <action name="actionUnderline">
-   <property name="icon">
-    <iconset resource="iconresource.qrc">
-     <normaloff>:/IconResource/icons/underline.png</normaloff>:/IconResource/icons/underline.png</iconset>
-   </property>
-   <property name="text">
-    <string>Underline</string>
-   </property>
-  </action>
   <action name="actionAbout_QtTxtEdit">
    <property name="icon">
     <iconset resource="iconresource.qrc">
@@ -284,13 +251,28 @@
     <string>Center Align</string>
    </property>
   </action>
-  <action name="actionNormal_Default">
+  <action name="actionFont_Dialog">
    <property name="icon">
     <iconset resource="iconresource.qrc">
-     <normaloff>:/IconResource/icons/normal.png</normaloff>:/IconResource/icons/normal.png</iconset>
+     <normaloff>:/IconResource/icons/changefont.png</normaloff>:/IconResource/icons/changefont.png</iconset>
    </property>
    <property name="text">
-    <string>Normal (Default)</string>
+    <string>Fonts</string>
+   </property>
+   <property name="toolTip">
+    <string>Fonts</string>
+   </property>
+  </action>
+  <action name="actionColour_Dialog">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/colorwheel.png</normaloff>:/IconResource/icons/colorwheel.png</iconset>
+   </property>
+   <property name="text">
+    <string>Font Colour</string>
+   </property>
+   <property name="toolTip">
+    <string>Font Colour</string>
    </property>
   </action>
  </widget>
